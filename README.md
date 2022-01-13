@@ -12,3 +12,9 @@ washington.csv
 
 ### Credits
 google.com, stack overflow, Udacity supporting materials
+
+### Software, firmware and hardware used
+github, gitbash, atom code editor, jupyter notebook
+
+### language used
+python
