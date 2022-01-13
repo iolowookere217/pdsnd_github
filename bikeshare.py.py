@@ -213,19 +213,29 @@ def user_stats(df):
     print('-'*100)
 
 
-    # iterating through the raw data in chucnks of 5 observations per iteration
-    start_loc = 0
-    end_loc= 5
-    while True:
-        view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no\n')
-        if view_data =="yes":
-            print(df.iloc[start_loc:end_loc])
-            df.reset_index()
-            start_loc += 5
-            end_loc += 5
-            view_data = input("Do you wish to continue?: Enter yes or no.\n").lower()
-        if view_data == 'no':
-            break
+    def data_info(df):
+    """
+   iterating through the raw data in chucnks of 5 observations per iteration
+    """
+    response = ['yes', 'no']
+    view_data = ''
+    i = 0
+    df.reset_index(False)
+    while view_data not in response:
+        print('\nWould you like to view 5 rows of individual trip data? Enter yes or no\n')
+        view_data = input().lower()
+        if view_data == 'yes':
+            print(tabulate(df.iloc[np.arange(0+i,5+i)], headers ="keys"))
+
+
+    while view_data == 'yes':
+        print('\nwish to view more data?')
+        i+=5
+        view_data = input().lower()
+        if view_data == 'yes':
+            print(tabulate(df.iloc[np.arange(0+i,5+i)], headers ="keys"))
+        elif view_data != 'yes':
+              break
 
 
 
